@@ -16,11 +16,13 @@
         <label for="numero2">Numero 2:</label>
         <input type="number" id="numero2" name="numero2" required>
 
-        <br>
+        <br><br>
 
         <input type="submit" name="operacion" value="Sumar">
         <input type="submit" name="operacion" value="Restar">
-
+        <input type="submit" name="operacion" value="Multiplicar">
+        <input type="submit" name="operacion" value="Dividir">
+        
         <br>
 
         <?php
@@ -35,6 +37,15 @@
                     $resultado = $numero1 + $numero2;
                 } else if ($operacion == "Restar") {
                     $resultado = $numero1 - $numero2;
+                } else if ($operacion == "Multiplicar") {
+                    $resultado = $numero1 * $numero2;
+                } else if ($operacion == "Dividir") {
+                    if ($numero2 == 0) {
+                        throw new Exception('No se puede dividir por cero.');
+                    }
+                    $resultado = $numero1 / $numero2;
+                } else {
+                    throw new Exception('Operación no válida.');
                 }
 
                 echo "<p>Resultado: $resultado</p>";
